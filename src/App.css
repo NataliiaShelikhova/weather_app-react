@@ -11,3 +11,6 @@ margin: 0 auto;
   font-size: 12px;
   margin: 10px;
 }
+.App a {
+  text-decoration: none;
+}
