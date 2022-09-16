@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
@@ -7,6 +7,9 @@ function App() {
       <header className="App-header">
        
       </header>
+      <footer>
+        This project was coded by Nata Shelikhova and it is <a href='https://github.com/NataliiaShelikhova/weather_app-react' target="_blank" rel="noopener noreferrer">open-sourced</a>
+      </footer>
     </div>
   );
 }
