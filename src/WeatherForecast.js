@@ -1,39 +1,62 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./WeatherForecast.css";
 import axios from "axios";
+import WeatherForecastDay from "./WeatherForecastDay";
 
 
 export default function WeatherForecast(props) {
-    function handleResponce(responce) {
-        return
+    let [loaded, setLoaded] = useState(false);
+    let [forecast, setForecast] = useState(null);
+    useEffect( () => {
+        setLoaded(false);
+        
+    }, [props.coord])
+
+    function handleResponce(response) {
+        setForecast(response.data.daily);
+        setLoaded(true);
+    
     }
-    let ApiKey = "3a9443f3da6d108da14d3f4bfbedd54c";
-    let longitude = props.coord.lon ;
-    let latitude =  props.coord.lat ;
-
-    let ApiUrl = `https://pro.openweathermap.org/data/2.5/forecast/climate?lat=${latitude}&lon=${longitude}&appid=${ApiKey}&units=metric`;
-    axios.get(ApiUrl).then(handleResponce);
-    return (
-        <div className="WeatherForecast">
-            <div className="row">
-                <div className="col">
-                    <div className="DayWeek">
+    if (loaded) {
+        return (
+          <div className="WeatherForecast">
+                <div className="row">
+                    {forecast.map(function (dailyForecast, index) {
+                        if (index < 6) {
+                            return (
+                                <div className="col" key={index}>
+                                    <WeatherForecastDay data={dailyForecast} url={props.data.iconUrl} />
                         
-                        Monday
+                                </div>
+                            );
 
-                    </div>
-                   <img href="https://ssl.gstatic.com/onebox/weather/48/rain_s_cloudy.png" alt="Rain" />
-                    <div>
-                        <span className="WeatherForecast-Temperature-Min">11</span>
-                        ...
-                        <span className="WeatherForecast-Temperature-Max">19</span>
-                    </div>
-
-                </div>
+                        } else {
+                            return null;
+                        }
+                       
+                    })}
+                
 
             </div>
 
         </div>
     )
+    
+
+    } else {
+    let apiKey = "01ae8315a818ed90119f38b049928c5d";
+    let longitude = props.coord.lon ;
+    let latitude =  props.coord.lat ;
+
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponce);
+        
+    return (null);
+        
+    
+      
+
+    }
+   
 }
