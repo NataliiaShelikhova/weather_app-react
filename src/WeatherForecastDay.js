@@ -18,7 +18,10 @@ export default function WeatherForecastDay(props) {
     return (
         <div>
              <div className="DayWeek">{day()}</div>
-                        <div><img src={props.url} alt='weather icon'  /></div>
+                        <div> <img src={props.data.weather[0].icon}
+    alt="weather-icon"
+    
+    /></div>
                          <div>
                             <span className="WeatherForecast-Temperature-Min">{minTemp()}</span>
                         ...
