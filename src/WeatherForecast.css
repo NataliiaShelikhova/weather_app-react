@@ -1,0 +1,14 @@
+.WeatherForecast {
+    text-align: center;
+ 
+}
+.WeatherForecast .WeatherForecast-Temperature-Min {
+    color: black;
+    opacity: 0.6;
+    font-weight: 500;
+}
+.WeatherForecast .WeatherForecast-Temperature-Max {
+    color: black;
+        opacity: 0.5;
+        font-weight: 500;
+}
