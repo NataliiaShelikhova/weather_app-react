@@ -6,27 +6,27 @@ export default function WeatherForecastDay(props) {
         let tempMax = Math.round(props.data.temp.max);
         return `${tempMax}`;
     }
-     function minTemp() {
+    function minTemp() {
         let tempMin = Math.round(props.data.temp.min);
         return `${tempMin}`;
     }
     function day() {
         let date = new Date(props.data.dt * 1000);
         let day = date.getDay();
-        let days = ["Sun", "Mon", "Tue", "|Wed", "Thu", "Fri", "Sat"]
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
         return days[day];
     }
     return (
         <div>
-             <div className="DayWeek">{day()}</div>
+            <div className="DayWeek">{day()}</div>
             <div>
                 <WeatherIcon code={props.data.weather[0].icon} size={36} /></div>
-                         <div>
-                            <span className="WeatherForecast-Temperature-Min">{minTemp()}</span>
-                        ...
-                            <span className="WeatherForecast-Temperature-Max">{maxTemp()}</span>
+            <div>
+                <span className="WeatherForecast-Temperature-Min">{minTemp()}</span>
+                ...
+                <span className="WeatherForecast-Temperature-Max">{maxTemp()}</span>
                         
-                        </div>                   
+            </div>
 
         </div>
     )
